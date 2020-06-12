@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <title>正能量生成器</title>
+    <style media="screen">
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>正能量生成器</h2>
+    <h3>生成正能量句子！随时随地拥有正能量！</h3>
+    <hr>
+    <div id="main">
+        <h3>例句：{{todo}}，因为这样可以{{effect}}！</h3>
+        <span>你做了什么事：</span>
+        <input v-model='todo'>
+        <span>能起到什么效果：</span>
+        <input v-model="effect">
+        <br>
+        <br>
+        <span>字数：</span>
+        <input v-model="num" type="number">
+        <br>
+        <br>
+        <button @click="generate">生成句子</button>
+    </div>
+    <script src="sen.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#main',
+            data: {
+                todo: '我删除了游戏APP',
+                effect: '提升我的学习成绩',
+                num: 1000
+            },
+            methods: {
+                generate() {
+                    let sen = '';
+                    for (let i = 0; sen.length < Number(this.num); i++) {
+                        sen += sentences[parseInt(Math.random() * sentences.length)].replace(/\{t\}/g, this.todo).replace(/\{e\}/g, this.effect);
+                    }
+                    console.log(sen)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
