@@ -1,7 +1,7 @@
 {
     "name": "znl-generator",
     "version": "1.0.0",
-    "description": "链接：[]()",
+    "description": "随时随地生成正能量！",
     "main": "sen.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
