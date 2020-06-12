@@ -31,6 +31,9 @@
         <br>
         <br>
         <button @click="generate">生成句子</button>
+        <hr>
+        <h3>生成结果：</h3>
+        <p>{{result}}</p>
     </div>
     <script src="sen.js"></script>
     <script>
@@ -39,7 +42,8 @@
             data: {
                 todo: '我删除了游戏APP',
                 effect: '提升我的学习成绩',
-                num: 1000
+                num: 1000,
+                result: ''
             },
             methods: {
                 generate() {
@@ -47,7 +51,7 @@
                     for (let i = 0; sen.length < Number(this.num); i++) {
                         sen += sentences[parseInt(Math.random() * sentences.length)].replace(/\{t\}/g, this.todo).replace(/\{e\}/g, this.effect);
                     }
-                    console.log(sen)
+                    this.result = sen;
                 }
             }
         })
